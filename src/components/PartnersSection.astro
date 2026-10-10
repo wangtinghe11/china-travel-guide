@@ -1,0 +1,40 @@
+---
+/**
+ * PartnersSection — affiliate/partner booking block for content pages.
+ *
+ * Reusable "Book Your Trip" section shown at the bottom of article and
+ * city pages — the highest-converting position (readers finish a guide,
+ * then book). Mirrors the homepage partners section.
+ *
+ * Props:
+ *  - title: optional section title (default "Book Your Trip")
+ *  - intro: optional intro line (default explains placeholder links)
+ */
+import AffiliateLink from './AffiliateLink.astro';
+
+interface Props {
+  title?: string;
+  intro?: string;
+}
+
+const { title = 'Book Your Trip', intro } = Astro.props;
+const defaultIntro =
+  'We partner with trusted booking platforms. Links are placeholders until affiliate programs are activated.';
+---
+
+<section class="partners" aria-label="Book your trip">
+  <h2 class="section-title">{title}</h2>
+  <p>{intro ?? defaultIntro}</p>
+  <div class="partners__row">
+    <AffiliateLink href="https://www.booking.com" label="Book Hotels" />
+    <AffiliateLink href="https://www.agoda.com" label="Compare on Agoda" />
+    <AffiliateLink href="https://www.klook.com" label="Tours & Activities" />
+  </div>
+</section>
+
+<style>
+  .partners { margin: 2.5rem 0; }
+  .section-title { font-size: 1.5rem; margin: 0 0 0.5rem; }
+  .partners p { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+  .partners__row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+</style>

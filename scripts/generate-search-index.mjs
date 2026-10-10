@@ -41,7 +41,11 @@ function collect(dir) {
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith('.md'))
-    .map((f) => ({ file: join(dir, f), fm: parseFrontmatter(join(dir, f)) }));
+    .map((f) => {
+      // Astro 5 derives slug from filename — do NOT rely on frontmatter slug.
+      const slug = f.replace(/\.md$/, '');
+      return { file: join(dir, f), slug, fm: parseFrontmatter(join(dir, f)) };
+    });
 }
 
 const cities = collect(join(root, 'src/content/cities'));
@@ -51,7 +55,7 @@ const index = [
   ...cities.map((c) => ({
     title: `${c.fm.nameEn || c.fm.title} Travel Guide`,
     description: c.fm.description || '',
-    url: `/cities/${c.fm.slug}/`,
+    url: `/cities/${c.slug}/`,
     tags: Array.isArray(c.fm.tags) ? c.fm.tags : [],
   })),
   ...articles
@@ -59,7 +63,7 @@ const index = [
     .map((a) => ({
       title: a.fm.title || '',
       description: a.fm.description || '',
-      url: `/guides/${a.fm.slug}/`,
+      url: `/guides/${a.slug}/`,
       tags: Array.isArray(a.fm.tags) ? a.fm.tags : [],
     })),
 ];

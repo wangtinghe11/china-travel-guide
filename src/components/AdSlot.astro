@@ -28,7 +28,7 @@ const labels: Record<string, string> = {
 const displayLabel = label ?? labels[position] ?? 'Advertisement';
 ---
 
-<div class="ad-slot ad-slot--{position}" data-ad-position={position} aria-label={displayLabel}>
+<div class={`ad-slot ad-slot--${position}`} data-ad-position={position} aria-label={displayLabel}>
   <div class="ad-slot__label">{displayLabel}</div>
   <div class="ad-slot__box">
     <!--

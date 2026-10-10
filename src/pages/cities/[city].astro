@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
+import PartnersSection from '../../components/PartnersSection.astro';
 
 export async function getStaticPaths() {
   const cities = await getCollection('cities');
@@ -102,6 +103,8 @@ const jsonLd = [
           <AdSlot position="sidebar" />
         </aside>
       </div>
+
+      <PartnersSection />
 
       <RelatedArticles articles={related} title="More City Guides" />
     </article>

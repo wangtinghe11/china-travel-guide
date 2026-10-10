@@ -36,7 +36,13 @@ Shanghai is China's most international city — a dazzling mix of colonial archi
 - **Two airports**: Pudong and Hongqiao — don't mix them up! Hongqiao is much closer to the city center.
 - **Weather**: Rainy season is mid-June to early July (hot and muggy). Winter is damp and feels colder than the temperature suggests.
 - **Biking**: Renting a shared bike to ride through the French Concession is delightful.
-- **Day trips**: High-speed rail reaches Suzhou and Hangzhou in 30 minutes — easy to add to your itinerary.
+- **Day trips**: High-speed rail reaches Suzhou and Hangzhou in 30 minutes — easy to add to your itinerary. Nanjing is about 1 hour.
+- **Nanjing Road**: Packed with people, but the lights are pretty at night — the classic photo spot is in front of the Peace Hotel (和平饭店).
+- **Suzhou Creek**: The waterfront walk from the Bund to the M50 art district is quiet and scenic — fewer crowds than the Bund promenade.
+- **Zhujiajiao water town**: 1 hour from the city, less crowded than Zhouzhuang or Wuzhen — half a day is enough.
+- **Nightlife**: Xintiandi and the Bund's Waitanyuan have plenty of bars; Hengshan Road is the classic bar street, open until 2 AM.
+- **Shopping**: Nanjing West Road (Henglong Plaza, Jing'an Kerry Centre) is the luxury zone; Qipu Road (七浦路) is the wholesale market where you bargain.
+- **Tourist SIM at PVG**: Carrier counters at Pudong Airport sell tourist SIM cards with your passport — cheaper than an eSIM but more hassle.
 
 ## Getting Around
 

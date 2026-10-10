@@ -35,8 +35,15 @@ Beijing is China's political and cultural heart — a city of imperial palaces, 
 - **Tiananmen**: Expect long security lines. For the flag-raising ceremony, arrive by 4 AM to get a spot.
 - **Jingshan Park**: ¥2 entry, best panoramic view of the Forbidden City — especially at sunset.
 - **Metro**: Scan with Alipay. Rush hour is packed — avoid 7–9 AM and 5–7 PM if you can.
-- **Food**: Don't try douzhi (fermented mung bean drink) unless you're brave — it's sour and funky. Chaogan (liver stew) and luzhu (braised pork) are safer bets.
-- **Best time to visit**: April–May (flowers) and September–October (crisp autumn air).
+- **Food**: Don't try douzhi (fermented mung bean drink) unless you're brave — it's sour and funky. Chaogan (liver stew) and luzhu (braised pork) are safer bets. **Huguosi Snack Street (护国寺小吃)** has the most complete selection of classics.
+- **National Museum**: Free but requires advance booking — world-class treasures, worth half a day. Closed on Mondays.
+- **Old Summer Palace (Yuanmingyuan)**: Ruins park with the iconic Western-style palace ruins — fewer crowds than the Summer Palace.
+- **Nightlife**: Sanlitun and Guomao (CBD) are the nightlife hubs — bars, restaurants, and a big expat crowd.
+- **Bird's Nest & Water Cube**: Best after dark when they light up — daytime is underwhelming. Just photograph from outside.
+- **Shopping**: Wangfujing is a tourist street — locals shop at Xidan and SKP. At Xiushui Street, bargain down to about 30% of the asking price.
+- **Taxis**: Airport runs cost ¥100–150 — use Didi for transparent upfront pricing.
+- **Transit card**: One card (公交地铁一卡通) works on buses and metro — phone NFC also works.
+- **Best time to visit**: April–May (flowers) and September–October (crisp autumn air). Avoid July–August (hot, humid "sauna" weather).
 
 ## Getting Around
 
