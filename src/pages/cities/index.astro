@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnersSection from '../../components/PartnersSection.astro';
 
 const cities = (await getCollection('cities')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -27,6 +28,17 @@ const cities = (await getCollection('cities')).sort((a, b) => a.data.order - b.d
     <div class="cities__grid">
       {cities.map((c) => (
         <a href={`/cities/${c.slug}/`} class="city-card">
+          {c.data.heroImage && (
+            <div class="city-card__thumb">
+              <img
+                src={c.data.heroImage}
+                alt={c.data.nameEn}
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+          )}
           <div class="city-card__body">
             <h2>{c.data.nameEn}</h2>
             <p>{c.data.description}</p>
@@ -35,6 +47,8 @@ const cities = (await getCollection('cities')).sort((a, b) => a.data.order - b.d
         </a>
       ))}
     </div>
+
+    <PartnersSection />
   </div>
 </BaseLayout>
 
@@ -52,12 +66,17 @@ const cities = (await getCollection('cities')).sort((a, b) => a.data.order - b.d
     display: block;
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.25rem;
+    padding: 0;
     color: var(--text);
     background: var(--card-bg);
+    overflow: hidden;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
   .city-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+  .city-card__thumb { aspect-ratio: 3/2; overflow: hidden; background: #eee; }
+  .city-card__thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+  .city-card:hover .city-card__thumb img { transform: scale(1.03); }
+  .city-card__body { padding: 1.25rem; }
   .city-card h2 { margin: 0 0 0.4rem; font-size: 1.2rem; }
   .city-card p { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.75rem; }
   .city-card__more { color: var(--accent); font-weight: 600; font-size: 0.9rem; }

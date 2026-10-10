@@ -9,7 +9,7 @@ const articles = (await getCollection('articles')).filter((a) => !a.data.draft);
 
 // Featured guides (pain-point keywords) — pinned to top
 const featuredGuides = articles
-  .filter((a) => ['visa', 'payment', 'transport', 'sim'].includes(a.data.category))
+  .filter((a) => ['visa', 'payment', 'transport', 'sim', 'safety'].includes(a.data.category))
   .sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
 
 // City articles for "latest" section
@@ -39,6 +39,7 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <section class="hero">
+    <div class="hero__bg" role="img" aria-label="China travel — West Lake, Hangzhou"></div>
     <div class="container">
       <h1>Travel China with Confidence</h1>
       <p class="hero__sub">
@@ -77,6 +78,17 @@ const jsonLd = [
       <div class="cities__grid">
         {cities.map((c) => (
           <a href={`/cities/${c.slug}/`} class="city-card">
+            {c.data.heroImage && (
+              <div class="city-card__thumb">
+                <img
+                  src={c.data.heroImage}
+                  alt={c.data.nameEn}
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                />
+              </div>
+            )}
             <div class="city-card__body">
               <h3>{c.data.nameEn}</h3>
               <p>{c.data.description}</p>
@@ -122,7 +134,18 @@ const jsonLd = [
     color: #fff;
     padding: 4rem 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/cities/hero-china.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+  }
+  .hero .container { position: relative; z-index: 1; }
   .hero h1 { font-size: 2.5rem; margin: 0 0 0.75rem; }
   .hero__sub { font-size: 1.15rem; max-width: 640px; margin: 0 auto 1.5rem; opacity: 0.9; }
   .hero__cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
@@ -173,12 +196,17 @@ const jsonLd = [
     display: block;
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.25rem;
+    padding: 0;
     color: var(--text);
     background: var(--card-bg);
+    overflow: hidden;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
   .city-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+  .city-card__thumb { aspect-ratio: 3/2; overflow: hidden; background: #eee; }
+  .city-card__thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+  .city-card:hover .city-card__thumb img { transform: scale(1.03); }
+  .city-card__body { padding: 1.25rem; }
   .city-card h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
   .city-card p { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.75rem; }
   .city-card__more { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
