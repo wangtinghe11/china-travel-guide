@@ -1,0 +1,212 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import TOC from '../../components/TOC.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles
+    .filter((a) => !a.data.draft)
+    .map((article) => ({
+      params: { slug: article.slug },
+      props: { article },
+    }));
+}
+
+const { article } = Astro.props;
+const allArticles = await getCollection('articles');
+const published = allArticles.filter((a) => !a.data.draft);
+
+// Related: same city first, then same category, then same tags
+const related = published
+  .filter((a) => a.slug !== article.slug)
+  .sort((a, b) => {
+    const score = (x: (typeof published)[number]) => {
+      let s = 0;
+      if (x.data.city && x.data.city === article.data.city) s += 3;
+      if (x.data.category === article.data.category) s += 2;
+      if (x.data.tags.some((t) => article.data.tags.includes(t))) s += 1;
+      return s;
+    };
+    return score(b) - score(a);
+  })
+  .slice(0, 3)
+  .map((a) => ({
+    title: a.data.title,
+    url: `/guides/${a.slug}/`,
+    description: a.data.description,
+    category: a.data.category,
+  }));
+
+const { Content, headings } = await article.render();
+
+// City name for breadcrumb
+const city = article.data.city
+  ? (await getCollection('cities')).find((c) => c.slug === article.data.city)
+  : undefined;
+
+const site = new URL(Astro.site ?? 'https://chinatravelguide.example.com');
+const articleUrl = new URL(`/guides/${article.slug}/`, site).href;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.data.title,
+    description: article.data.description,
+    image: article.data.heroImage ? [new URL(article.data.heroImage, site).href] : undefined,
+    datePublished: article.data.pubDate.toISOString(),
+    ...(article.data.updatedDate
+      ? { dateModified: article.data.updatedDate.toISOString() }
+      : { dateModified: article.data.pubDate.toISOString() }),
+    author: { '@type': 'Person', name: article.data.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'China Travel Guide',
+      logo: { '@type': 'ImageObject', url: new URL('/images/logo.webp', site).href },
+    },
+    mainEntityOfPage: articleUrl,
+  },
+  ...(article.data.faq.length > 0
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: article.data.faq.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        },
+      ]
+    : []),
+];
+---
+
+<BaseLayout
+  title={article.data.seoTitle ?? article.data.title}
+  description={article.data.seoDescription ?? article.data.description}
+  canonicalPath={`/guides/${article.slug}/`}
+  jsonLd={jsonLd}
+  pubDate={article.data.pubDate.toISOString()}
+  updatedDate={article.data.updatedDate?.toISOString()}
+  author={article.data.author}
+>
+  <div class="container">
+    <Breadcrumb
+      crumbs={[
+        { name: 'Home', url: '/' },
+        ...(city
+          ? [
+              { name: 'Cities', url: '/cities/' },
+              { name: city.data.nameEn, url: `/cities/${city.slug}/` },
+            ]
+          : [{ name: 'Guides', url: '/guides/' }]),
+        { name: article.data.title, url: `/guides/${article.slug}/` },
+      ]}
+    />
+
+    <article class="article">
+      <header class="article__header">
+        <div class="article__meta">
+          <span class="article__cat">{article.data.category}</span>
+          <time datetime={article.data.pubDate.toISOString()}>
+            {article.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {article.data.author && <span>· {article.data.author}</span>}
+        </div>
+        <h1>{article.data.title}</h1>
+        <p class="article__desc">{article.data.description}</p>
+      </header>
+
+      <AdSlot position="top" />
+
+      <div class="article__body">
+        <div class="article__content">
+          <TOC headings={headings} />
+          <div class="prose">
+            <Content />
+          </div>
+
+          <AdSlot position="middle" />
+
+          {article.data.faq.length > 0 && (
+            <section class="faq" aria-label="Frequently asked questions">
+              <h2>Frequently Asked Questions</h2>
+              {article.data.faq.map((f) => (
+                <details class="faq__item">
+                  <summary>{f.question}</summary>
+                  <p>{f.answer}</p>
+                </details>
+              ))}
+            </section>
+          )}
+
+          <AdSlot position="bottom" />
+        </div>
+
+        <aside class="article__sidebar">
+          <AdSlot position="sidebar" />
+        </aside>
+      </div>
+
+      <RelatedArticles articles={related} />
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .article__header { margin: 1.5rem 0; }
+  .article__meta { display: flex; gap: 0.6rem; align-items: center; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+  .article__cat {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(200, 16, 46, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .article__header h1 { font-size: 2.1rem; line-height: 1.25; margin: 0.6rem 0 0.5rem; }
+  .article__desc { font-size: 1.1rem; color: var(--muted); margin: 0; max-width: 720px; }
+  .article__body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+  }
+  .prose { font-size: 1.05rem; }
+  .prose h2 { margin-top: 2.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .prose h3 { margin-top: 1.6rem; }
+  .prose ul, .prose ol { padding-left: 1.4rem; }
+  .prose li { margin-bottom: 0.4rem; }
+  .prose blockquote {
+    border-left: 4px solid var(--accent);
+    margin: 1.2rem 0;
+    padding: 0.6rem 1rem;
+    background: var(--card-bg);
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+  }
+  .prose table { border-collapse: collapse; width: 100%; margin: 1.2rem 0; font-size: 0.95rem; }
+  .prose th, .prose td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+  .prose th { background: var(--card-bg); }
+  .faq { margin: 2.5rem 0; }
+  .faq__item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    padding: 0.6rem 1rem;
+  }
+  .faq__item summary { font-weight: 600; cursor: pointer; }
+  .faq__item p { margin: 0.5rem 0 0; color: var(--muted); }
+  .article__sidebar { position: sticky; top: 80px; }
+  @media (max-width: 900px) {
+    .article__body { grid-template-columns: 1fr; }
+    .article__sidebar { position: static; }
+  }
+</style>

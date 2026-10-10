@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Practical Guides — {{ site.name }}{% endblock %}
+{% block description %}Practical China travel guides: visa-free entry, payments, high-speed rail, eSIM & internet, and safety.{% endblock %}
+{% block content %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <span>Guides</span>
+</nav>
+
+<section class="section">
+  <h1>Practical guides</h1>
+  <p class="lead">The pain-point topics every China traveler asks about — independent of which city you visit.</p>
+  <div class="card-grid">
+    {% for g in guides %}
+    <a class="card" href="/guides/{{ g.slug }}/">
+      <div class="card-icon">{{ g.icon }}</div>
+      <h3>{{ g.short_title }}</h3>
+      <p>{{ g.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

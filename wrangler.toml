@@ -1,0 +1,24 @@
+# Cloudflare Pages configuration
+# https://developers.cloudflare.com/pages/configuration/
+
+name = "china-travel-guide"
+compatibility_date = "2026-01-01"
+
+[build]
+command = "npm run build"
+output_dir = "dist"
+
+[build.environment]
+NODE_VERSION = "22"
+
+# Redirects (add as needed)
+# [[redirects]]
+# from = "/old-path"
+# to = "/new-path"
+# status = 301
+
+# Headers (add as needed)
+# [[headers]]
+# for = "/*"
+# [headers.values]
+# X-Frame-Options = "DENY"

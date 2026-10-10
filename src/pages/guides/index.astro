@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = (await getCollection('articles'))
+  .filter((a) => !a.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Group by category
+const categories = ['visa', 'payment', 'transport', 'sim', 'safety', 'guide'];
+const categoryNames: Record<string, string> = {
+  visa: 'Visa & Entry',
+  payment: 'Payments & Money',
+  transport: 'Transport',
+  sim: 'Connectivity & eSIM',
+  safety: 'Safety & Health',
+  guide: 'General Guides',
+};
+---
+
+<BaseLayout
+  title="Practical China Travel Guides — Visa, Payments, Rail, eSIM"
+  description="All practical guides for traveling in China: visa rules, Alipay & WeChat Pay, high-speed rail booking, eSIMs, and safety tips."
+  canonicalPath="/guides/"
+>
+  <div class="container">
+    <Breadcrumb
+      crumbs={[
+        { name: 'Home', url: '/' },
+        { name: 'Guides', url: '/guides/' },
+      ]}
+    />
+
+    <header class="page-header">
+      <h1>Practical China Travel Guides</h1>
+      <p>Everything you need to know before you fly — visa, payments, trains, and connectivity.</p>
+    </header>
+
+    <AdSlot position="top" />
+
+    {categories.map((cat) => {
+      const catArticles = articles.filter((a) => a.data.category === cat);
+      if (catArticles.length === 0) return null;
+      return (
+        <section class="cat" aria-label={categoryNames[cat] ?? cat}>
+          <h2 class="cat__title">{categoryNames[cat] ?? cat}</h2>
+          <div class="cat__grid">
+            {catArticles.map((a) => (
+              <a href={`/guides/${a.slug}/`} class="cat__card">
+                <h3>{a.data.title}</h3>
+                <p>{a.data.description}</p>
+                <span class="cat__date">{a.data.pubDate.toISOString().slice(0, 10)}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header { margin: 1.5rem 0; }
+  .page-header h1 { font-size: 2rem; margin: 0 0 0.5rem; }
+  .page-header p { color: var(--muted); font-size: 1.05rem; margin: 0; }
+  .cat { margin: 2rem 0; }
+  .cat__title { font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .cat__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .cat__card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    color: var(--text);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .cat__card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+  .cat__card h3 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+  .cat__card p { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.5rem; }
+  .cat__date { font-size: 0.8rem; color: var(--muted); }
+</style>

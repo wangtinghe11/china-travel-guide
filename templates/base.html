@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ site.name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+  {% block keywords %}{% endblock %}
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block head_extra %}{% endblock %}
+  {% block jsonld %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/static/img/logo.svg" alt="{{ site.name }}" width="32" height="32">
+        <span>{{ site.name }}</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/cities/">Cities</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about/">About</a>
+      </nav>
+      <form class="search-form" action="/search" method="get" role="search">
+        <input type="search" name="q" placeholder="Search guides…" aria-label="Search" value="{{ search_query or '' }}">
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <strong>{{ site.name }}</strong>
+        <p>{{ site.tagline }}</p>
+      </div>
+      <div class="footer-col">
+        <strong>Top Cities</strong>
+        <ul>
+          {% for c in cities[:5] %}
+          <li><a href="/cities/{{ c.slug }}/">{{ c.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <strong>Practical Guides</strong>
+        <ul>
+          {% for g in guides %}
+          <li><a href="/guides/{{ g.slug }}/">{{ g.short_title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <strong>Site</strong>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+          <li><a href="/robots.txt">robots.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© {{ year }} {{ site.name }}. All rights reserved. <a href="/about/">Contact &amp; disclaimer</a>.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/main.js" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

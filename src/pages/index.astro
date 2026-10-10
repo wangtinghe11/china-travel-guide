@@ -1,0 +1,208 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+
+const cities = (await getCollection('cities')).sort((a, b) => a.data.order - b.data.order);
+const articles = (await getCollection('articles')).filter((a) => !a.data.draft);
+
+// Featured guides (pain-point keywords) — pinned to top
+const featuredGuides = articles
+  .filter((a) => ['visa', 'payment', 'transport', 'sim'].includes(a.data.category))
+  .sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+
+// City articles for "latest" section
+const cityArticles = articles.filter((a) => a.data.city);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'China Travel Guide',
+    url: new URL('/', Astro.site).href,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: new URL('/search?q={search_term_string}', Astro.site).href,
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="China Travel Guide 2026 — Visa, Payments & 10 City Guides for Western Visitors"
+  description="Practical China travel guides for Western visitors: visa-free entry, Alipay & WeChat Pay setup, high-speed rail booking, eSIMs, and in-depth guides to Beijing, Shanghai, Xi'an, Chengdu and more."
+  canonicalPath="/"
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Travel China with Confidence</h1>
+      <p class="hero__sub">
+        Practical, up-to-date guides for Western visitors — visa rules, mobile payments, high-speed rail,
+        eSIMs, and 10 cities worth your time.
+      </p>
+      <div class="hero__cta">
+        <a href="#cities" class="btn btn--primary">Explore Cities</a>
+        <a href="/guides/china-visa-guide/" class="btn btn--ghost">Visa Guide First</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <AdSlot position="top" />
+
+    <!-- Featured pain-point guides -->
+    <section class="featured" aria-label="Essential guides">
+      <h2 class="section-title">Essential Guides</h2>
+      <div class="featured__grid">
+        {featuredGuides.map((a) => (
+          <a href={`/guides/${a.slug}/`} class="featured__card">
+            <span class="featured__cat">{a.data.category}</span>
+            <h3>{a.data.title}</h3>
+            <p>{a.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot position="middle" />
+
+    <!-- 10 cities -->
+    <section id="cities" class="cities" aria-label="City guides">
+      <h2 class="section-title">10 Cities Worth Your Time</h2>
+      <div class="cities__grid">
+        {cities.map((c) => (
+          <a href={`/cities/${c.slug}/`} class="city-card">
+            <div class="city-card__body">
+              <h3>{c.data.nameEn}</h3>
+              <p>{c.data.description}</p>
+              <span class="city-card__more">City guide →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot position="middle" />
+
+    <!-- Latest city articles -->
+    <section class="latest" aria-label="Latest guides">
+      <h2 class="section-title">Latest City Guides</h2>
+      <div class="latest__grid">
+        {cityArticles.map((a) => (
+          <a href={`/guides/${a.slug}/`} class="latest__card">
+            <h3>{a.data.title}</h3>
+            <p>{a.data.description}</p>
+            <span class="latest__date">{a.data.pubDate.toISOString().slice(0, 10)}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Affiliate placeholder -->
+    <section class="partners" aria-label="Book your trip">
+      <h2 class="section-title">Book Your Trip</h2>
+      <p>We partner with trusted booking platforms. Links are placeholders until affiliate programs are activated.</p>
+      <div class="partners__row">
+        <AffiliateLink href="https://www.booking.com" label="Book Hotels" />
+        <AffiliateLink href="https://www.agoda.com" label="Compare on Agoda" />
+        <AffiliateLink href="https://www.klook.com" label="Tours & Activities" />
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.5rem; margin: 0 0 0.75rem; }
+  .hero__sub { font-size: 1.15rem; max-width: 640px; margin: 0 auto 1.5rem; opacity: 0.9; }
+  .hero__cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .btn--primary { background: var(--accent); color: #fff; }
+  .btn--primary:hover { background: var(--accent-dark); text-decoration: none; }
+  .btn--ghost { border: 1px solid rgba(255,255,255,0.5); color: #fff; }
+  .btn--ghost:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+
+  .section-title { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
+
+  .featured__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .featured__card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    color: var(--text);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .featured__card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+  .featured__cat {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .featured__card h3 { font-size: 1.05rem; margin: 0.4rem 0; }
+  .featured__card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+  .cities__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .city-card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    color: var(--text);
+    background: var(--card-bg);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .city-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+  .city-card h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
+  .city-card p { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.75rem; }
+  .city-card__more { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+
+  .latest__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .latest__card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    color: var(--text);
+  }
+  .latest__card:hover { border-color: var(--accent); text-decoration: none; }
+  .latest__card h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+  .latest__card p { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.5rem; }
+  .latest__date { font-size: 0.8rem; color: var(--muted); }
+
+  .partners { margin: 2.5rem 0; }
+  .partners__row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 2.5rem 0; }
+    .hero h1 { font-size: 1.8rem; }
+  }
+</style>

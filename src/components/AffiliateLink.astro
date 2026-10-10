@@ -1,0 +1,70 @@
+---
+/**
+ * AffiliateLink — reserved affiliate/partner link component.
+ *
+ * Renders a styled outbound link with a small "partner" badge.
+ * To activate a partner program (Booking.com, Agoda, Klook, Viator…),
+ * set the partner's tracking URL in the `href` prop. The component
+ * adds rel="sponsored nofollow" for SEO compliance.
+ *
+ * Props:
+ *  - href: destination URL (put your affiliate tracking params here)
+ *  - label: link text
+ *  - badge: optional badge text (default "Partner")
+ *  - variant: 'button' | 'text' (default 'button')
+ */
+interface Props {
+  href: string;
+  label: string;
+  badge?: string;
+  variant?: 'button' | 'text';
+}
+
+const { href, label, badge = 'Partner', variant = 'button' } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`affiliate-link affiliate-link--${variant}`}
+  rel="sponsored nofollow noopener"
+  target="_blank"
+>
+  {label}
+  {badge && <span class="affiliate-link__badge">{badge}</span>}
+</a>
+
+<style>
+  .affiliate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.15s ease;
+  }
+  .affiliate-link--button {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+  }
+  .affiliate-link--button:hover {
+    background: var(--accent-dark);
+    text-decoration: none;
+    color: #fff;
+  }
+  .affiliate-link--text {
+    color: var(--accent);
+    padding: 0.25rem 0;
+  }
+  .affiliate-link__badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(200, 16, 46, 0.1);
+    color: var(--accent);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+</style>

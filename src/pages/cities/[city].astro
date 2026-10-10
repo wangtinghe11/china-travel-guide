@@ -1,0 +1,152 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const allArticles = await getCollection('articles');
+const cityArticles = allArticles
+  .filter((a) => !a.data.draft && a.data.city === city.slug)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const related = allArticles
+  .filter((a) => !a.data.draft && a.data.city !== city.slug)
+  .slice(0, 3)
+  .map((a) => ({
+    title: a.data.title,
+    url: `/guides/${a.slug}/`,
+    description: a.data.description,
+    category: a.data.category,
+  }));
+
+const { Content } = await city.render();
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'City',
+    name: city.data.nameEn,
+    description: city.data.description,
+    url: new URL(`/cities/${city.slug}/`, Astro.site).href,
+    ...(city.data.lat && city.data.lng
+      ? { geo: { '@type': 'GeoCoordinates', latitude: city.data.lat, longitude: city.data.lng } }
+      : {}),
+  },
+];
+---
+
+<BaseLayout
+  title={city.data.seoTitle ?? `${city.data.nameEn} Travel Guide 2026 — Local Tips & Itineraries`}
+  description={city.data.seoDescription ?? city.data.description}
+  canonicalPath={`/cities/${city.slug}/`}
+  jsonLd={jsonLd}
+>
+  <div class="container">
+    <Breadcrumb
+      crumbs={[
+        { name: 'Home', url: '/' },
+        { name: 'Cities', url: '/cities/' },
+        { name: city.data.nameEn, url: `/cities/${city.slug}/` },
+      ]}
+    />
+
+    <article class="city-page">
+      <header class="city-page__header">
+        <h1>{city.data.nameEn} Travel Guide</h1>
+        <p class="city-page__desc">{city.data.description}</p>
+        <div class="city-page__meta">
+          <span>{city.data.province}</span>
+          {city.data.tags.map((t) => <span class="tag">#{t}</span>)}
+        </div>
+      </header>
+
+      <AdSlot position="top" />
+
+      <div class="city-page__body">
+        <div class="city-page__content">
+          <div class="prose">
+            <Content />
+          </div>
+
+          <AdSlot position="middle" />
+
+          {cityArticles.length > 0 && (
+            <section class="city-articles" aria-label={`${city.data.nameEn} guides`}>
+              <h2>{city.data.nameEn} Guides</h2>
+              <div class="city-articles__list">
+                {cityArticles.map((a) => (
+                  <a href={`/guides/${a.slug}/`} class="city-articles__item">
+                    <h3>{a.data.title}</h3>
+                    <p>{a.data.description}</p>
+                    <span class="city-articles__date">{a.data.pubDate.toISOString().slice(0, 10)}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <AdSlot position="bottom" />
+        </div>
+
+        <aside class="city-page__sidebar">
+          <AdSlot position="sidebar" />
+        </aside>
+      </div>
+
+      <RelatedArticles articles={related} title="More City Guides" />
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .city-page__header { margin: 1.5rem 0; }
+  .city-page__header h1 { font-size: 2.2rem; margin: 0 0 0.5rem; }
+  .city-page__desc { font-size: 1.1rem; color: var(--muted); margin: 0 0 0.75rem; max-width: 720px; }
+  .city-page__meta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; font-size: 0.85rem; color: var(--muted); }
+  .tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  .city-page__body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+  }
+  .prose { font-size: 1.02rem; }
+  .prose h2 { margin-top: 2rem; }
+  .prose h3 { margin-top: 1.5rem; }
+  .prose ul, .prose ol { padding-left: 1.4rem; }
+  .prose li { margin-bottom: 0.4rem; }
+  .city-articles { margin-top: 2rem; }
+  .city-articles__list { display: grid; gap: 0.75rem; }
+  .city-articles__item {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text);
+  }
+  .city-articles__item:hover { border-color: var(--accent); text-decoration: none; }
+  .city-articles__item h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+  .city-articles__item p { margin: 0 0 0.4rem; font-size: 0.88rem; color: var(--muted); }
+  .city-articles__date { font-size: 0.8rem; color: var(--muted); }
+  .city-page__sidebar { position: sticky; top: 80px; }
+  @media (max-width: 900px) {
+    .city-page__body { grid-template-columns: 1fr; }
+    .city-page__sidebar { position: static; }
+  }
+</style>

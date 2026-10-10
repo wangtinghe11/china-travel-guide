@@ -1,0 +1,259 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  /** Canonical path, e.g. /cities/beijing/ */
+  canonicalPath?: string;
+  /** JSON-LD structured data (array of objects) */
+  jsonLd?: object[];
+  /** Open Graph image */
+  ogImage?: string;
+  /** Article published date (ISO) */
+  pubDate?: string;
+  /** Article modified date (ISO) */
+  updatedDate?: string;
+  /** Author name */
+  author?: string;
+  /** Hide search box (e.g. on article pages) */
+  hideSearch?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = '/',
+  jsonLd = [],
+  ogImage = '/images/og-default.webp',
+  pubDate,
+  updatedDate,
+  author,
+  hideSearch = false,
+} = Astro.props;
+
+const site = new URL(Astro.site ?? 'https://chinatravelguide.example.com');
+const canonical = new URL(canonicalPath, site).href;
+const siteName = 'China Travel Guide';
+const ogType = pubDate ? 'article' : 'website';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, site).href} />
+    <meta property="og:site_name" content={siteName} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, site).href} />
+
+    <!-- Article meta -->
+    {pubDate && <meta property="article:published_time" content={pubDate} />}
+    {updatedDate && <meta property="article:modified_time" content={updatedDate} />}
+    {author && <meta name="author" content={author} />}
+
+    <!-- Favicon (inline SVG, no extra request) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏯</text></svg>" />
+
+    <!-- JSON-LD structured data -->
+    {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+
+    <style is:global>
+      :root {
+        --bg: #ffffff;
+        --text: #1a1a1a;
+        --muted: #666666;
+        --accent: #c8102e;
+        --accent-dark: #9e0d24;
+        --border: #e5e5e5;
+        --card-bg: #fafafa;
+        --max-width: 1100px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.7;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      img { max-width: 100%; height: auto; }
+      .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1rem; }
+      .site-header {
+        border-bottom: 1px solid var(--border);
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .logo { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+      .logo span { color: var(--accent); }
+      .nav { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+      .nav a { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+      .nav a:hover { color: var(--accent); text-decoration: none; }
+      .site-footer {
+        border-top: 1px solid var(--border);
+        margin-top: 3rem;
+        padding: 2rem 1rem;
+        background: var(--card-bg);
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+      .footer-col h4 { margin: 0 0 0.5rem; color: var(--text); font-size: 0.95rem; }
+      .footer-col ul { list-style: none; margin: 0; padding: 0; }
+      .footer-col li { margin-bottom: 0.35rem; }
+      .footer-col a { color: var(--muted); }
+      .footer-col a:hover { color: var(--accent); }
+      .search-box { display: flex; align-items: center; gap: 0.5rem; }
+      .search-box input {
+        padding: 0.45rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        width: 180px;
+      }
+      .search-box input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+      .search-results {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        max-height: 400px;
+        overflow-y: auto;
+        width: 320px;
+        display: none;
+        z-index: 200;
+      }
+      .search-results.open { display: block; }
+      .search-results a { display: block; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text); }
+      .search-results a:hover { background: var(--card-bg); text-decoration: none; }
+      .search-results .sr-title { font-weight: 600; font-size: 0.9rem; }
+      .search-results .sr-desc { font-size: 0.8rem; color: var(--muted); }
+      .search-results .sr-empty { padding: 0.8rem; color: var(--muted); font-size: 0.9rem; }
+      @media (max-width: 640px) {
+        .header-inner { flex-wrap: wrap; }
+        .search-box { order: 3; width: 100%; }
+        .search-box input { width: 100%; }
+        .search-results { width: 100%; right: auto; left: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo">China<span>Travel</span>Guide</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/cities/">Cities</a>
+          <a href="/guides/">Guides</a>
+          <a href="/about/">About</a>
+        </nav>
+        {!hideSearch && (
+          <div class="search-box" id="search-box">
+            <input type="search" id="search-input" placeholder="Search guides…" aria-label="Search" autocomplete="off" />
+            <div class="search-results" id="search-results"></div>
+          </div>
+        )}
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>China Travel Guide</h4>
+          <p>Practical, up-to-date travel guides for Western visitors to China. Visa, payments, high-speed rail, and 10 city guides.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Popular Guides</h4>
+          <ul>
+            <li><a href="/guides/china-visa-guide/">China Visa Guide</a></li>
+            <li><a href="/guides/how-to-pay-in-china/">How to Pay in China</a></li>
+            <li><a href="/guides/china-high-speed-rail-guide/">High-Speed Rail Guide</a></li>
+            <li><a href="/guides/best-esim-for-china/">Best eSIM for China</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Cities</h4>
+          <ul>
+            <li><a href="/cities/beijing/">Beijing</a></li>
+            <li><a href="/cities/shanghai/">Shanghai</a></li>
+            <li><a href="/cities/xian/">Xi'an</a></li>
+            <li><a href="/cities/chengdu/">Chengdu</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <ul>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/about/#contact">Contact</a></li>
+            <li><a href="/about/#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Client-side search (simple filter over a JSON index) -->
+    {!hideSearch && (
+      <script>
+        const input = document.getElementById('search-input');
+        const results = document.getElementById('search-results');
+        let index = [];
+
+        // Load the search index (generated at build time)
+        fetch('/search-index.json')
+          .then((r) => r.json())
+          .then((data) => { index = data; })
+          .catch(() => {});
+
+        input.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          if (q.length < 2) { results.classList.remove('open'); return; }
+          const hits = index
+            .filter((item) => (item.title + ' ' + item.description + ' ' + (item.tags || []).join(' ')).toLowerCase().includes(q))
+            .slice(0, 8);
+          if (hits.length === 0) {
+            results.innerHTML = '<div class="sr-empty">No results found</div>';
+          } else {
+            results.innerHTML = hits
+              .map((h) => `<a href="${h.url}"><div class="sr-title">${h.title}</div><div class="sr-desc">${h.description}</div></a>`)
+              .join('');
+          }
+          results.classList.add('open');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!document.getElementById('search-box').contains(e.target)) results.classList.remove('open');
+        });
+      </script>
+    )}
+  </body>
+</html>

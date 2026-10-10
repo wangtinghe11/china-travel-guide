@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://chinatravelguide.example.com/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/about/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/beijing/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/beijing/beijing-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/chengdu/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/chengdu/chengdu-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/chongqing/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/chongqing/chongqing-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/guangzhou/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/guangzhou/guangzhou-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/guilin/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/guilin/guilin-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/hangzhou/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/hangzhou/hangzhou-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/shanghai/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/shanghai/shanghai-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/shenzhen/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/shenzhen/shenzhen-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/xian/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/xian/xian-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/zhangjiajie/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/cities/zhangjiajie/zhangjiajie-overview.html</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/esim-china/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/high-speed-rail-china/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/payments-in-china/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/safety-in-china/</loc></url>
+  <url><loc>https://chinatravelguide.example.com/guides/visa-free-china/</loc></url>
+</urlset>

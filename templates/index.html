@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ site.name }} — {{ site.tagline }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>China, without the guesswork</h1>
+  <p class="hero-sub">Deep, practical guides to China's visa-free cities — written for Western travelers. Visas, payments, trains, eSIM, and the 10 cities worth your trip.</p>
+  <div class="hero-cta">
+    <a href="/cities/" class="btn btn-primary">Explore 10 cities</a>
+    <a href="/guides/" class="btn btn-secondary">Start with the basics</a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Popular practical guides</h2>
+  <div class="card-grid">
+    {% for g in guides %}
+    <a class="card" href="/guides/{{ g.slug }}/">
+      <div class="card-icon">{{ g.icon }}</div>
+      <h3>{{ g.short_title }}</h3>
+      <p>{{ g.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Explore the 10 visa-free cities</h2>
+  <div class="card-grid">
+    {% for c in cities %}
+    <a class="card city-card" href="/cities/{{ c.slug }}/">
+      <div class="city-hero" style="background-image:url('/static/img/heroes/{{ c.hero }}.svg')"></div>
+      <h3>{{ c.name }} <span class="cn-name">{{ c.cn_name }}</span></h3>
+      <p>{{ c.tagline }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Latest articles</h2>
+  <div class="article-list">
+    {% for a in latest_articles %}
+    <a class="article-row" href="{{ a.url }}">
+      <div>
+        <h3>{{ a.title }}</h3>
+        <p class="meta">{{ a.city_name or a.guide_title }} · {{ a.date }}</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

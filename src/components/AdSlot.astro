@@ -1,0 +1,70 @@
+---
+/**
+ * AdSlot — reserved ad placement.
+ *
+ * Placeholder component that renders a clearly-marked ad container.
+ * When AdSense is approved, paste the AdSense snippet into the
+ * `renderAd` slot below (or swap this component's body for the
+ * <ins class="adsbygoogle"> markup). Until then it renders a
+ * subtle placeholder so layout/QA can see where ads will appear.
+ *
+ * Props:
+ *  - position: 'top' | 'middle' | 'bottom' | 'sidebar' | 'in-article'
+ *  - label: optional custom label
+ */
+interface Props {
+  position?: 'top' | 'middle' | 'bottom' | 'sidebar' | 'in-article';
+  label?: string;
+}
+
+const { position = 'in-article', label } = Astro.props;
+const labels: Record<string, string> = {
+  top: 'Advertisement',
+  middle: 'Advertisement',
+  bottom: 'Advertisement',
+  sidebar: 'Sponsored',
+  'in-article': 'Advertisement',
+};
+const displayLabel = label ?? labels[position] ?? 'Advertisement';
+---
+
+<div class="ad-slot ad-slot--{position}" data-ad-position={position} aria-label={displayLabel}>
+  <div class="ad-slot__label">{displayLabel}</div>
+  <div class="ad-slot__box">
+    <!--
+      AdSense placeholder — replace with:
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX"
+           data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    <span class="ad-slot__hint">Ad space — {position}</span>
+  </div>
+</div>
+
+<style>
+  .ad-slot {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  .ad-slot__label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+  .ad-slot__box {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .ad-slot--sidebar .ad-slot__box { min-height: 250px; }
+  .ad-slot--top .ad-slot__box { min-height: 90px; }
+  .ad-slot--bottom .ad-slot__box { min-height: 90px; }
+</style>

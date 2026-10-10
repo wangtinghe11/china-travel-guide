@@ -1,0 +1,18 @@
+{
+  "name": "china-travel-guide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "English China travel guide for Western visitors — visa, payments, high-speed rail, 10 cities. Static site, SEO-first.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/generate-search-index.mjs",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.1.0",
+    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/rss": "^4.0.11"
+  }
+}
