@@ -26,13 +26,15 @@ const jsonLd = [
       target: new URL('/search?q={search_term_string}', Astro.site).href,
       'query-input': 'required name=search_term_string',
     },
+    // Add social profiles here once they exist (e.g. Instagram, YouTube, Pinterest)
+    sameAs: [],
   },
 ];
 ---
 
 <BaseLayout
-  title="China Travel Guide 2026 — Visa, Payments & 10 City Guides for Western Visitors"
-  description="Practical China travel guides for Western visitors: visa-free entry, Alipay & WeChat Pay setup, high-speed rail booking, eSIMs, and in-depth guides to Beijing, Shanghai, Xi'an, Chengdu and more."
+  title="China Travel Guide 2026 — Visa, Transport & City Guides for Foreign Visitors"
+  description="Practical China travel guides written for foreign visitors: visa-free entry, Alipay & WeChat Pay, high-speed rail, eSIM, and honest city guides to Beijing, Shanghai, Xi'an, Chengdu and more."
   canonicalPath="/"
   jsonLd={jsonLd}
 >
