@@ -30,7 +30,7 @@ const {
   hideSearch = false,
 } = Astro.props;
 
-const site = new URL(Astro.site ?? 'https://chinatravelguide.example.com');
+const site = new URL(Astro.site ?? 'https://chinatravelguide.co');
 const canonical = new URL(canonicalPath, site).href;
 const siteName = 'China Travel Guide';
 const ogType = pubDate ? 'article' : 'website';

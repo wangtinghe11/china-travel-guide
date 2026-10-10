@@ -17,6 +17,8 @@ faq:
     answer: "At most hotels and some international chains, yes. But most local shops, restaurants, and taxis only accept Alipay/WeChat Pay QR codes, so set those up first."
   - question: "Is WeChat Pay or Alipay better for tourists?"
     answer: "Alipay is generally easier for foreigners to set up and has a dedicated 'Tour Pass' option. WeChat Pay is more widely used by locals. Having both is ideal."
+  - question: "Is China really cashless everywhere?"
+    answer: "Almost. Even temple donation boxes and street vendors accept QR codes. Hangzhou — Alipay's home city — is fully cashless. But keep ¥200–¥500 cash for rural areas and emergencies."
 ---
 
 # How to Pay in China 2026: Alipay, WeChat Pay & Cash for Foreigners
@@ -66,6 +68,13 @@ WeChat Pay works similarly but is more finicky for foreigners:
 - **Show your code**: You show your payment QR code; the merchant scans it
 - **Split bills**: Just have each person pay separately — no awkward splitting needed
 - **Tipping**: Not expected in China. Rounding up is fine.
+
+## City-by-City Notes
+
+- **Hangzhou** — Alipay's home base. Fully cashless; even the smallest tea stall takes QR codes.
+- **Shenzhen** — Tech capital; QR payments everywhere, and a 30-minute train to Hong Kong (bring your passport for the border).
+- **Beijing & Shanghai** — International cards work at most hotels and big malls, but street food and small shops are QR-only.
+- **Guilin & Zhangjiajie** — Tourist areas accept Alipay/WeChat, but rural villages may only take cash. Carry more here.
 
 ## Common Pitfalls
 

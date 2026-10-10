@@ -17,6 +17,8 @@ faq:
     answer: "Airalo and Holafly are the most popular. For China specifically, look for plans that include a VPN or use a separate VPN app alongside your eSIM."
   - question: "Can I use my home SIM in China?"
     answer: "Only if your carrier has a China roaming agreement — most do, but roaming is expensive and your home apps (Google, WhatsApp) will still be blocked."
+  - question: "Does an eSIM bypass the Great Firewall?"
+    answer: "No. Your data still flows through Chinese networks. You need a VPN app (ExpressVPN, NordVPN, Astrill, or LetsVPN) installed and tested before you fly."
 ---
 
 # Best eSIM for China 2026: Stay Connected Without a Physical SIM
@@ -82,7 +84,7 @@ China is one of the few countries where your phone setup matters as much as your
 - **Baidu Maps** — similar, more Chinese
 - **Metro apps** — each city's metro app has English route planning
 
-**Pro tip**: Download offline maps of your cities before you fly.
+**Pro tip**: Download offline maps of your cities before you fly. In Chongqing, GPS is famously unreliable in the 8D maze of elevated roads and tunnels — download the area and ask locals for directions.
 
 ## Setup Checklist
 

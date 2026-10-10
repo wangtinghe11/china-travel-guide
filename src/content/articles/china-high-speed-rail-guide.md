@@ -17,6 +17,10 @@ faq:
     answer: "Arrive 45–60 minutes early for your first trip. Stations are huge, security checks take time, and gates close 5 minutes before departure."
   - question: "What's the difference between first and second class on Chinese trains?"
     answer: "Second class is comfortable 3+2 seating, similar to economy. First class is 2+2 with more legroom. Business class has lie-flat seats on some routes."
+  - question: "How long does the Beijing–Shanghai high-speed train take?"
+    answer: "About 4.5 hours for the 1,318 km journey. It's the busiest route in the world and trains run every few minutes during peak times."
+  - question: "Which cities are easy day trips by high-speed rail?"
+    answer: "Shanghai to Suzhou or Hangzhou takes just 30 minutes. Chengdu to Dujiangyan is 30 minutes. Guilin to Yangshuo is a short ride, and Zhangjiajie to Fenghuang (Phoenix) Ancient Town is about 1 hour."
 ---
 
 # China High-Speed Rail 2026: How to Book Tickets & Ride Like a Local
@@ -30,6 +34,23 @@ China's high-speed rail network is the largest in the world — over 40,000 km o
 - **Comfort**: Wide seats, power outlets, smooth ride
 - **Stations**: In city centers, not 40 km outside like airports
 - **Cost**: Often cheaper than flying when you factor in airport transfers
+
+## Popular Routes & Travel Times
+
+| Route | Time | Notes |
+|-------|------|-------|
+| Beijing → Shanghai | 4.5 h | The flagship route, trains every few minutes |
+| Shanghai → Suzhou | 30 min | Perfect day trip for gardens & canals |
+| Shanghai → Hangzhou | 30 min | West Lake, tea fields, and temples |
+| Chengdu → Dujiangyan | 30 min | 2,000-year-old irrigation marvel |
+| Chengdu → Leshan | 1 h | Giant Buddha of Leshan |
+| Guilin → Yangshuo | 30–40 min | Karst peaks & Li River scenery |
+| Zhangjiajie → Fenghuang | 1 h | Phoenix Ancient Town, night lights |
+| Xi'an → Huashan | 30 min | The sacred mountain, cable car up |
+| Guangzhou → Shenzhen | 30 min | Two megacities, one ticket |
+| Chongqing → Wulong | 1.5 h | Three Natural Bridges karst park |
+
+**Pro tip**: Book **window seats** (A or F) for the scenery — especially on the Guilin–Guangzhou and Chengdu–Chongqing routes.
 
 ## Booking Tickets with a Foreign Passport
 
@@ -59,8 +80,6 @@ These apps handle passport verification for you and send e-tickets. Worth the fe
 | First (一等座) | 2+2, more legroom | ~1.6× | Comfort |
 | Business (商务座) | Lie-flat on some routes | ~3× | Long trips, luxury |
 
-**Pro tip**: Book **window seats** (A or F) for the scenery — especially on the Guilin–Guangzhou and Chengdu–Chongqing routes.
-
 ## At the Station
 
 1. **Arrive 45–60 minutes early** for your first trip
@@ -70,6 +89,8 @@ These apps handle passport verification for you and send e-tickets. Worth the fe
 5. **Find your carriage** — follow the platform signs, carriages are numbered
 
 **Important**: Gates close **5 minutes before departure**. Don't be late — trains don't wait.
+
+**Watch out**: Big cities have multiple stations. Beijing has 4+ (Beijing South, Beijing West, Beijing, Beijing Chaoyang); Shanghai has Shanghai Hongqiao and Shanghai Railway Station. Check which one your train departs from — they can be 30+ minutes apart!
 
 ## On the Train
 
@@ -89,9 +110,10 @@ These apps handle passport verification for you and send e-tickets. Worth the fe
 ## Common Mistakes
 
 - ❌ **Missing the gate-closing time** — trains leave on the dot
-- ❌ **Booking the wrong station** — Beijing has 4+ stations (Beijing South, Beijing West, Beijing, Beijing Chaoyang). Check which one your train departs from!
+- ❌ **Booking the wrong station** — Beijing has 4+ stations, Shanghai has 2+. Check which one your train departs from!
 - ❌ **Losing your passport** — it's your ticket, your ID, and your hotel key
 - ❌ **Not booking ahead** for holidays (Chinese New Year, Golden Week) — trains sell out
+- ❌ **Forgetting the window seat** on scenic routes — the karst peaks of Guilin and the gorges of Chongqing are the best views in China
 
 ## Quick Checklist
 

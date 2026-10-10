@@ -25,6 +25,19 @@ Shanghai is China's most international city — a dazzling mix of colonial archi
 - **Yu Garden** — classical Ming dynasty garden
 - **Tianzifang** — artsy lanes and craft shops
 
+## Local Insider Tips
+
+- **Bund lights**: On in summer from 19:00, winter from 17:30. The skyline is most beautiful half an hour after dark.
+- **Maglev train**: 8 minutes from Pudong Airport to Longyang Road — the world's fastest commercial train, worth trying once.
+- **Disneyland**: Go on a weekday. Popular rides still queue 1–2 hours.
+- **French Concession**: Wukang Road and Anfu Road are packed with cafés. Wukang Building is the iconic photo spot.
+- **Benbang cuisine** (Shanghainese) is sweet — try **Lao Jishi (老吉士)** or **Lanxin (兰心)**, local favorites.
+- **Shengjianbao**: One order is 4 pieces — don't over-order. **Da Huchun (大壶春)** is the traditional leavened-dough style.
+- **Two airports**: Pudong and Hongqiao — don't mix them up! Hongqiao is much closer to the city center.
+- **Weather**: Rainy season is mid-June to early July (hot and muggy). Winter is damp and feels colder than the temperature suggests.
+- **Biking**: Renting a shared bike to ride through the French Concession is delightful.
+- **Day trips**: High-speed rail reaches Suzhou and Hangzhou in 30 minutes — easy to add to your itinerary.
+
 ## Getting Around
 
 The metro is excellent and English-signed. The Maglev train connects Pudong Airport to the city in 8 minutes. Ferries across the Huangpu River cost ¥2 and give great skyline views.

@@ -15,7 +15,11 @@ faq:
   - question: "Which Great Wall section is best for first-timers?"
     answer: "Mutianyu is the best choice — restored, less crowded than Badaling, with a cable car and toboggan ride down. Jinshanling is for serious hikers."
   - question: "Do I need to book the Forbidden City in advance?"
-    answer: "Yes — tickets sell out days ahead, especially in peak season. Book online with your passport at least 3–5 days in advance."
+    answer: "Yes — tickets sell out days ahead, especially in peak season. Book online with your passport at least 7 days in advance. The palace is closed on Mondays."
+  - question: "Which airport should I fly into Beijing?"
+    answer: "Capital Airport (PEK) is much closer to the city — 25 minutes on the airport express. Daxing Airport (PKX) is far south and takes over an hour. Check your arrival airport before booking hotels."
+  - question: "What's the best time to visit Beijing?"
+    answer: "April–May for the spring blossoms and September–October for crisp autumn weather are the best seasons. Summer is hot and humid; winter is cold but clear."
 ---
 
 # Beijing Travel Guide 2026: 3-Day Itinerary & First-Timer Tips
@@ -24,15 +28,15 @@ Beijing is the essential first stop for most visitors to China. Here's the perfe
 
 ## Day 1: The Imperial Heart
 
-**Morning**: Tiananmen Square (free, passport check) → **Forbidden City** (book tickets 3–5 days ahead, enter by 8:30 AM to beat crowds, 2–3 hours inside)
+**Morning**: Tiananmen Square (free, passport check — expect a security queue) → **Forbidden City** (book tickets at least 7 days ahead on the official site or mini-program, enter by 8:30 AM to beat crowds, 2–3 hours inside)
 
-**Afternoon**: Jingshan Park (the hill behind the Forbidden City — best panoramic view) → **Wangfujing** street food
+**Afternoon**: **Jingshan Park** (¥2 entry, climb the hill behind the Forbidden City for the best panoramic view — sunset here is spectacular) → **Wangfujing** street food
 
 **Evening**: Qianmen Dashilan — traditional shopping street, Peking duck dinner
 
 ## Day 2: The Great Wall
 
-**Morning**: Take the tourist bus or a private driver to **Mutianyu** (1.5 hours). Cable car up, walk the wall, toboggan down.
+**Morning**: Take the tourist bus or a private driver to **Mutianyu** (1.5 hours). Cable car up, walk the wall, toboggan down. Mutianyu is restored and far less crowded than Badaling — the section locals actually recommend.
 
 **Afternoon**: Back to the city → **Summer Palace** (imperial gardens, boat ride on Kunming Lake)
 
@@ -42,14 +46,22 @@ Beijing is the essential first stop for most visitors to China. Here's the perfe
 
 **Morning**: **Temple of Heaven** (arrive early to see locals doing tai chi and dancing)
 
-**Afternoon**: **Nanluoguxiang** hutong walk → **Shichahai** → **Drum Tower** (climb for sunset views)
+**Afternoon**: **Wudaoying / North Luogu Lane** hutong walk (skip the commercialized South Luogu Lane) → **Shichahai** → **Drum Tower** (climb for sunset views)
 
 **Evening**: Last dinner — try hotpot or a hutong courtyard restaurant
 
+## Where to Eat Like a Local
+
+- **Peking duck**: Locals go to **Siji Minfu (四季民福)** or **Da Dong (大董)** — Quanjude is the tourist spot. Book ahead, the queues are real.
+- **Breakfast**: Try **zhagān (炒肝)** and **luzhu (卤煮)** — hearty, savory classics. Skip douzhi (豆汁儿) unless you're brave: it's a fermented, sour drink that even many locals won't touch.
+- **Hutongs**: Wudaoying and North Luogu Lane have great courtyard restaurants and cafés.
+
 ## Practical Tips
 
-- **Metro**: Buy a transit card or use Alipay's transport QR. The metro is cheap and English-signed.
-- **Tickets**: Forbidden City, Great Wall, and Summer Palace all need advance booking with your passport.
+- **Metro**: Scan Alipay's transport QR code at the gates — no ticket machine needed. The metro is cheap and English-signed. Avoid rush hour (8–9 AM, 6–7 PM) — it's packed.
+- **Tickets**: Forbidden City, Great Wall, and Summer Palace all need advance booking with your passport. The Forbidden City is **closed on Mondays**.
+- **Airports**: **Capital Airport (PEK)** is close — 25 minutes on the airport express. **Daxing Airport (PKX)** is far south, over an hour away. Don't book a hotel near the wrong one.
+- **Tiananmen**: Expect security queues and passport checks. If you want to see the flag-raising ceremony, arrive by 4 AM to get a spot.
 - **Weather**: Spring (Apr–May) and autumn (Sep–Oct) are best. Summer is hot and humid; winter is cold but clear.
 - **Language**: Download a translation app — English is limited outside tourist areas.
 

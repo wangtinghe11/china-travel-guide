@@ -17,6 +17,8 @@ faq:
     answer: "A standard L tourist visa costs around $140–$185 for US citizens depending on entry count and processing speed. Fees vary by nationality and consulate."
   - question: "How long does a China visa application take?"
     answer: "Standard processing takes 4–5 business days. Expedited service (2–3 days) is available at most consulates for an extra fee."
+  - question: "Can I use the 144-hour transit to visit multiple cities?"
+    answer: "Yes, within the approved transit area. For example, you can fly into Beijing, take the high-speed rail to Xi'an, and fly out from Xi'an — as long as you stay within the permitted region and hold a confirmed onward ticket."
 ---
 
 # China Visa for US & European Travelers 2026: Complete Guide
@@ -44,6 +46,8 @@ This is the most useful policy for Western travelers:
 
 **Example**: Fly London → Beijing (stay 5 days) → Tokyo. You qualify for 144-hour transit without a visa.
 
+**Multi-city trick**: The transit area often covers a whole region. Fly into Beijing, take the high-speed rail to Xi'an (4.5 hours), and fly out from Xi'an — all within the 144-hour window. Check the exact approved area for your port of entry.
+
 ## The Tourist Visa (L Visa)
 
 If you need a proper visa:
@@ -61,10 +65,11 @@ If you need a proper visa:
 - ❌ **Overstaying** — even by a day, this causes serious problems
 - ❌ **Booking non-refundable flights before visa approval**
 - ❌ **Forgetting your hotel booking printout** — some ports ask for it
+- ❌ **Not checking the approved transit area** — some regions are stricter than others
 
 ## What About Hong Kong & Macau?
 
-Hong Kong and Macau have **separate visa policies** from mainland China. Most Western passport holders get 90 days visa-free in Hong Kong and Macau. A trip to Hong Kong counts as a "third destination" for the 144-hour transit rule — a popular trick for extending stays.
+Hong Kong and Macau have **separate visa policies** from mainland China. Most Western passport holders get 90 days visa-free in Hong Kong and Macau. A trip to Hong Kong counts as a "third destination" for the 144-hour transit rule — a popular trick for extending stays. From Shenzhen, Hong Kong is just 30 minutes away by train (bring your passport for the border).
 
 ## Quick Checklist
 

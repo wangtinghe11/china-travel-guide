@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://chinatravelguide.example.com',
+  site: 'https://chinatravelguide.co',
   output: 'static',
   compressHTML: true,
   build: {
