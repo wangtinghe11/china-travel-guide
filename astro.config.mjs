@@ -10,6 +10,10 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
+  server: {
+    host: true,
+    allowedHosts: ['lcd-spatial-moisture-knew.trycloudflare.com'],
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',
