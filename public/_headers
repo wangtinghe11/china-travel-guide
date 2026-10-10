@@ -1,0 +1,32 @@
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/images/*
+  Cache-Control: public, max-age=86400
+
+/*.png
+  Cache-Control: public, max-age=86400
+
+/*.jpg
+  Cache-Control: public, max-age=86400
+
+/*.webp
+  Cache-Control: public, max-age=86400
+
+/*.svg
+  Cache-Control: public, max-age=86400
+
+/*.ico
+  Cache-Control: public, max-age=86400
+
+/search-index.json
+  Cache-Control: public, max-age=3600
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600
+
+/sitemap-0.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600

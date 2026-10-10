@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chinatravelguide.co/sitemap-index.xml
+Sitemap: https://china-travel-guide-ne9.pages.dev/sitemap-index.xml

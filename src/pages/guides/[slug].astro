@@ -49,7 +49,7 @@ const city = article.data.city
   ? (await getCollection('cities')).find((c) => c.slug === article.data.city)
   : undefined;
 
-const site = new URL(Astro.site ?? 'https://chinatravelguide.co');
+const site = new URL(Astro.site ?? 'https://china-travel-guide-ne9.pages.dev');
 const articleUrl = new URL(`/guides/${article.slug}/`, site).href;
 
 const jsonLd = [
