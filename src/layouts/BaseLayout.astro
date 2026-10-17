@@ -256,5 +256,47 @@ const ogType = pubDate ? 'article' : 'website';
         });
       </script>
     )}
+
+    <!-- Anonymous visitor analytics (no cookies; daily + total pageviews & uniques).
+         Fire-and-forget: never blocks or breaks page rendering. -->
+    <script is:inline>
+      (function () {
+        try {
+          var API = 'https://countapi.mileshilliard.com/api/v1/hit/';
+          var d = new Date();
+          var day = d.getUTCFullYear() + '-' +
+            String(d.getUTCMonth() + 1).padStart(2, '0') + '-' +
+            String(d.getUTCDate()).padStart(2, '0');
+
+          function ping(key) {
+            // Fire once; ignore failures (analytics must never break UX or double-count).
+            try {
+              fetch(API + encodeURIComponent(key), { mode: 'cors', keepalive: true })
+                .catch(function () {});
+            } catch (e) {}
+          }
+
+          // Pageviews: total, daily, per-page
+          ping('ctg-pv-total');
+          ping('ctg-pv-' + day);
+          var path = location.pathname.replace(/\/$/, '');
+          if (!path) path = 'home';
+          var slug = 'ctg-page-' + path.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+          if (slug.length < 90) ping(slug);
+
+          // Uniques: once per browser per day, and once ever
+          try {
+            if (localStorage.getItem('ctg-uv-' + day) !== '1') {
+              ping('ctg-uv-' + day);
+              localStorage.setItem('ctg-uv-' + day, '1');
+            }
+            if (localStorage.getItem('ctg-uv-total') !== '1') {
+              ping('ctg-uv-total');
+              localStorage.setItem('ctg-uv-total', '1');
+            }
+          } catch (e) {}
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>
