@@ -95,4 +95,58 @@ China is one of the few countries where your phone setup matters as much as your
 - [ ] Download WeChat, Alipay, and Didi before you land
 - [ ] Save your hotel address in Chinese characters (show the taxi driver)
 
+## eSIM vs Physical SIM vs Home Roaming: Which Actually Works
+
+This is the decision most people get wrong, because the three options fail in different ways.
+
+| Option | Works for Google/WhatsApp? | Keeps your home number? | Friction on arrival |
+|---|---|---|---|
+| **Travel eSIM (data-only)** | No — still behind the firewall | Yes (leave your home SIM active for SMS) | None — install before you fly |
+| **Physical SIM from a Chinese carrier** | No | No — you swap it out | Requires a passport and a shop visit; real-name registration is mandatory |
+| **Home carrier roaming** | **Often yes** — data routes back through your home country | Yes | None, but expensive and usually data-capped |
+| **Data eSIM with built-in VPN routing** | **Yes** — provider routes traffic outside China | Yes | None |
+
+The last two rows are the only ones that solve the firewall problem without a separate VPN. **That is the real reason to read a provider's fine print** — a "China eSIM" that routes through a Hong Kong or Singapore gateway behaves completely differently from one that just resells China Unicom data.
+
+### The physical-SIM route, honestly
+
+Buying a SIM at the airport (China Mobile / China Unicom / China Telecom counters in the arrivals hall) is the cheapest per gigabyte and gives you a real Chinese phone number — which some apps want for registration, and which helps with restaurant queue systems and deliveries. The costs are real though: passport registration, a queue, a Mandarin-only form, and you lose your home number unless your phone has two physical slots.
+
+### Why keeping your home number matters
+
+Banks, airlines, and your own two-factor authentication send SMS to your home number. If you pop out your SIM, those stop arriving — which is exactly when you need them most (a card blocked as "suspicious foreign transaction" is a classic day-two problem). With an eSIM you keep the home line active for SMS and route data through the eSIM. **Turn off "data roaming" for your home line** in settings, or you'll come home to a bill.
+
+## Airport Wi-Fi and the First Hour in China
+
+Chinese airports have free Wi-Fi, but the login usually needs a Chinese phone number to receive an SMS code — which you don't have yet. The practical sequence:
+
+1. **Install and activate your eSIM before you take off**, not on the jet bridge. Activation needs an internet connection, and airport Wi-Fi in China may not give you one.
+2. **Screenshot your eSIM QR code and the provider's manual APN settings** before you fly. If activation fails on arrival, you want the settings without needing to log into email.
+3. **Keep your VPN logged in on your home connection** before departure, so the session and credentials are cached. Downloading and logging into a VPN from inside China is where most people get stuck.
+
+## How Much Data Do You Actually Need
+
+Rough working numbers for a China trip — this is navigation, messaging, translation and photo uploads, not video streaming:
+
+- **Short trip (3–5 days), one city**: 3 GB is comfortable; 5 GB if you upload photos and videos daily.
+- **Two weeks, multiple cities**: 10 GB. High-speed rail legs eat data if you're working.
+- **Heavy user (videos, hotspot to a laptop, remote work)**: 20 GB, or an unlimited plan for a week.
+- **Hotspot note**: most travel eSIMs allow tethering, but some throttle or block it. If you plan to work from a laptop, check before buying — this is the single most common gotcha.
+
+China's mobile data is fast and cheap by Western standards; the constraint is your plan, not the network.
+
+## Troubleshooting on the Ground
+
+- **eSIM installed but "No Service"**: the APN didn't populate. Set it manually from the provider's instructions; on iPhone it's Settings → Cellular → your eSIM → Cellular Data Network.
+- **Data works, apps still won't load**: that's the firewall, not your plan. Your eSIM is fine; the VPN is the problem. Try switching protocol (WireGuard → OpenVPN or vice versa) before assuming the VPN is dead.
+- **eSIM shows connected but slow**: you're probably parked on a congested band in a train station or a shopping mall basement. Move, or toggle airplane mode to force a new tower.
+- **Phone shows two carriers and you're burning money**: check which line is set as the data line. "Allow Cellular Data Switching" will happily use your expensive home roaming SIM; turn it off.
+- **Nothing works and you land at midnight**: buy a physical SIM from the airport machine rather than fighting activation in a taxi queue. Then fix the eSIM at the hotel.
+
+## What Not to Bother With
+
+- **Portable Wi-Fi dongles** — another device to charge, and prices have caught up with eSIM data. Only worth it for families of four or more sharing one connection.
+- **Pocket translators with SIM slots** — your phone does this better with a translation app.
+- **"Unlimited" plans with a fair-use cap** — check whether "unlimited" means unlimited at 4G speed or unlimited at dial-up speed after 1 GB a day. Most are the second one.
+
 *Last updated: October 2026.*
