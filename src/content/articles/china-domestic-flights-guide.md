@@ -46,7 +46,7 @@ And flying loses badly in one specific case: Chinese public holidays. During Gol
 
 ## Booking: Four Channels, Four Different Experiences
 
-**1. The airline's own English website.** Air China, China Southern, Hainan, Shenzhen Airlines and Spring all run English booking sites, and China Southern's [English portal](https://www.csair.com/en/) is a full booking, check-in and refund system rather than a brochure. This is the channel to use when something goes wrong: a delay, a cancellation, a name correction. Third-party agencies cannot fix your ticket; the airline can.
+**1. The airline's own English website.** China Southern and Spring Airlines both run full English booking sites — China Southern's [English portal](https://www.csair.com/en/) handles booking, check-in and refunds rather than just displaying a brochure, and Spring's [English site](https://en.ch.com/) sells and manages its own low-cost fares. This is the channel to use when something goes wrong: a delay, a cancellation, a name correction. Third-party agencies cannot fix your ticket; the airline can.
 
 **2. Chinese booking apps.** Ctrip (携程) and its international arm Trip.com are the same company. Trip.com is genuinely convenient for foreigners and accepts foreign cards without drama, but it adds a service fee and its customer service is a layer between you and the airline.
 
